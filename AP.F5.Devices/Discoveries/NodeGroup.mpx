@@ -1,0 +1,100 @@
+﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<Monitoring>
+		<Discoveries>
+
+			<!-- AP.F5.Discovery.Root -->
+			<Discovery ID="AP.F5.Discovery.Root" Enabled="true" Target="AP.F5.Root" ConfirmDelivery="false" Remotable="true" Priority="Normal">
+				<Category>Discovery</Category>
+				<DiscoveryTypes>
+					<DiscoveryClass TypeID="AP.F5.NodeGroup" />
+					<DiscoveryRelationship TypeID="AP.F5.Root.Contains.NodeGroup" />
+				</DiscoveryTypes>
+				<DataSource ID="DS" TypeID="SC!Microsoft.SystemCenter.GroupPopulator">
+					<RuleId>$MPElement$</RuleId>
+					<GroupInstanceId>$Target/Id$</GroupInstanceId>
+					<MembershipRules>
+						<MembershipRule>
+							<MonitoringClass>$MPElement[Name="AP.F5.NodeGroup"]$</MonitoringClass>
+							<RelationshipClass>$MPElement[Name="AP.F5.Root.Contains.NodeGroup"]$</RelationshipClass>
+						</MembershipRule>
+					</MembershipRules>
+				</DataSource>
+			</Discovery>
+
+			<!-- AP.F5.Discovery.NodeGroup -->
+			<Discovery ID="AP.F5.Discovery.NodeGroup" Target="AP.F5.NodeGroup" Enabled="true" ConfirmDelivery="false" Remotable="true" Priority="Normal">
+				<Category>Discovery</Category>
+				<DiscoveryTypes>
+					<DiscoveryClass TypeID="AP.F5.NodeGroup" />
+					<DiscoveryRelationship TypeID="AP.F5.NodeGroup.Contains.Nodes" />
+				</DiscoveryTypes>
+				<DataSource ID="DS" TypeID="SC!Microsoft.SystemCenter.GroupPopulator">
+					<RuleId>$MPElement$</RuleId>
+					<GroupInstanceId>$MPElement[Name="AP.F5.NodeGroup"]$</GroupInstanceId>
+					<MembershipRules>
+						<MembershipRule>
+							<MonitoringClass>$MPElement[Name="SNL!System.NetworkManagement.Node"]$</MonitoringClass>
+							<RelationshipClass>$MPElement[Name="AP.F5.NodeGroup.Contains.Nodes"]$</RelationshipClass>
+							<Expression>
+								<RegExExpression>
+									<ValueExpression>
+										<Property>$MPElement[Name="SNL!System.NetworkManagement.Node"]/SystemObjectID$</Property>
+									</ValueExpression>
+									<Operator>ContainsSubstring</Operator>
+									<Pattern>1.3.6.1.4.1.3375</Pattern>
+								</RegExExpression>
+							</Expression>
+						</MembershipRule>
+					</MembershipRules>
+				</DataSource>
+			</Discovery>
+
+		</Discoveries>
+	</Monitoring>
+
+	<LanguagePacks>
+
+		<LanguagePack ID="ENU" IsDefault="true">
+
+			<DisplayStrings>
+
+				<!-- AP.F5.Discovery.Root -->
+				<DisplayString ElementID="AP.F5.Discovery.Root">
+					<Name>F5 Root Discovery</Name>
+					<Description>Discovers F5 Root Object</Description>
+				</DisplayString>
+
+				<!-- AP.F5.Discovery.NodeGroup -->
+				<DisplayString ElementID="AP.F5.Discovery.NodeGroup">
+					<Name>Network Devices Group Discovery</Name>
+					<Description>Discovers Matching Network Management Nodes for Group</Description>
+				</DisplayString>
+			</DisplayStrings>
+
+			<KnowledgeArticles>
+
+				<!-- AP.F5.Discovery.Root -->
+				<KnowledgeArticle ElementID="AP.F5.Discovery.Root">
+					<MamlContent>
+						<section xmlns="http://schemas.microsoft.com/maml/2004/10">
+							<title>Root Discovery</title>
+							<para>Discovery for F5 Root Object</para>
+						</section>
+					</MamlContent>
+				</KnowledgeArticle>
+
+				<!-- AP.F5.Discovery.NodeGroup -->
+				<KnowledgeArticle ElementID="AP.F5.Discovery.NodeGroup">
+					<MamlContent>
+						<section xmlns="http://schemas.microsoft.com/maml/2004/10">
+							<title>Network Devices Group Discovery</title>
+							<para>Places F5 Network Managment Nodes into a custom group</para>
+						</section>
+					</MamlContent>
+				</KnowledgeArticle>
+
+			</KnowledgeArticles>
+		</LanguagePack>
+
+	</LanguagePacks>
+</ManagementPackFragment>

@@ -1,0 +1,41 @@
+﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<TypeDefinitions>
+		<EntityTypes>
+			<ClassTypes>
+
+				<!-- AP.F5.NodeGroup -->
+				<ClassType ID="AP.F5.NodeGroup" Base="System!System.Group" Accessibility="Public" Abstract="false" Hosted="false" Singleton="true" />
+
+			</ClassTypes>
+
+			<RelationshipTypes>
+
+				<!-- AP.F5.NodeGroup.Contains.Nodes -->
+				<RelationshipType ID="AP.F5.NodeGroup.Contains.Nodes" Base="System!System.Containment" Abstract="false" Accessibility="Public">
+					<Source ID="Source" Type="AP.F5.NodeGroup"/>
+					<Target ID="Target" Type="SNL!System.NetworkManagement.Node"/>
+				</RelationshipType>
+
+			</RelationshipTypes>
+		</EntityTypes>
+	</TypeDefinitions>
+	<LanguagePacks>
+		<LanguagePack ID="ENU" IsDefault="true">
+			<DisplayStrings>
+
+				<!-- AP.F5.NodeGroup -->
+				<DisplayString ElementID="AP.F5.NodeGroup">
+					<Name>F5 Network Management Node Group</Name>
+					<Description>All Network Management Nodes</Description>
+				</DisplayString>
+
+				<!-- AP.F5.NodeGroup.Contains.Nodes -->
+				<DisplayString ElementID="AP.F5.NodeGroup.Contains.Nodes">
+					<Name>F5 Network Devices Node Containment</Name>
+					<Description>Describes The Containment Relationship Between Network Management Node Group and Nodes</Description>
+				</DisplayString>
+
+			</DisplayStrings>
+		</LanguagePack>
+	</LanguagePacks>
+</ManagementPackFragment>

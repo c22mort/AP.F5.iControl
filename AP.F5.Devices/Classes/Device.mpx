@@ -1,0 +1,68 @@
+﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<TypeDefinitions>
+		<EntityTypes>
+			<ClassTypes>
+				<!-- AP.F5.Device -->
+				<ClassType ID="AP.F5.Device" Base="SNL!System.NetworkManagement.Node" Accessibility="Public" Abstract="false" Hosted="false" Singleton="false">
+					<Property ID="SerialNumber" Key="false" Type="string" />
+					<Property ID="ProductName" Key="false" Type="string" />
+					<Property ID="ProductVersion" Key="false" Type="string" />
+					<Property ID="ProductBuild" Key="false" Type="string" />
+					<Property ID="ProductEdition" Key="false" Type="string" />
+					<Property ID="ProductDate" Key="false" Type="string" />
+					<Property ID="IsVirtual" Key="false" Type="bool" />
+					<Property ID="IsStandalone" Key="false" Type="bool" />
+				</ClassType>
+
+			</ClassTypes>
+		</EntityTypes>
+	</TypeDefinitions>
+	<LanguagePacks>
+		<LanguagePack ID="ENU" IsDefault="true">
+			<DisplayStrings>
+
+				<!-- AP.F5.Device -->
+				<DisplayString ElementID="AP.F5.Device">
+					<Name>F5 Device Class</Name>
+					<Description>Class for F5 Devices</Description>
+				</DisplayString>
+				<DisplayString ElementID="AP.F5.Device" SubElementID="SerialNumber">
+					<Name>Serial Number</Name>
+					<Description>Serial Number of F5 Device</Description>
+				</DisplayString>
+				<DisplayString ElementID="AP.F5.Device" SubElementID="ProductName">
+					<Name>Product Name</Name>
+					<Description>Product Name of F5 Device</Description>
+				</DisplayString>
+				<DisplayString ElementID="AP.F5.Device" SubElementID="ProductVersion">
+					<Name>Product Version</Name>
+					<Description>Product Version of F5 Device</Description>
+				</DisplayString>
+				<DisplayString ElementID="AP.F5.Device" SubElementID="ProductBuild">
+					<Name>Product Build</Name>
+					<Description>Product Build of F5 Device</Description>
+				</DisplayString>
+				<DisplayString ElementID="AP.F5.Device" SubElementID="ProductEdition">
+					<Name>Product Edition</Name>
+					<Description>Product Edition of F5 Device</Description>
+				</DisplayString>
+				<DisplayString ElementID="AP.F5.Device" SubElementID="ProductDate">
+					<Name>Product Date</Name>
+					<Description>Product Date of F5 Device</Description>
+				</DisplayString>
+				<DisplayString ElementID="AP.F5.Device" SubElementID="IsVirtual">
+					<Name>Is Virtual</Name>
+					<Description>Is F5 Device a Virtual Appliance</Description>
+				</DisplayString>
+				<DisplayString ElementID="AP.F5.Device" SubElementID="IsStandalone">
+					<Name>Is Standalone</Name>
+					<Description>Is F5 Device a Standalone Appliance or part of a Device Group</Description>
+				</DisplayString>
+
+
+
+			</DisplayStrings>
+		</LanguagePack>
+	</LanguagePacks>
+
+</ManagementPackFragment>

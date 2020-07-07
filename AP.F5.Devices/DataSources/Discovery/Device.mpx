@@ -1,0 +1,94 @@
+﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<TypeDefinitions>
+		<ModuleTypes>
+
+			<!-- AP.F5.DataSource.Discovery.Device.Filtered -->
+			<DataSourceModuleType ID="AP.F5.DataSource.Discovery.Device.Filtered" Accessibility="Public" Batching="false">
+				<Configuration>
+					<xsd:element minOccurs="1" name="IntervalSeconds" type="xsd:integer"/>
+					<xsd:element minOccurs="1" name="SyncTime" type="xsd:string"/>
+					<xsd:element minOccurs="1" name="TimeoutSeconds" type="xsd:integer"/>
+				</Configuration>
+				<OverrideableParameters>
+					<OverrideableParameter ID="IntervalSeconds" Selector="$Config/IntervalSeconds$" ParameterType="int"/>
+					<OverrideableParameter ID="SyncTime" Selector="$Config/SyncTime$" ParameterType="string"/>
+				</OverrideableParameters>
+				<ModuleImplementation Isolation="Any">
+					<Composite>
+						<MemberModules>
+							<DataSource ID="DiscoveryProvider" TypeID="Windows!Microsoft.Windows.TimedPowerShell.DiscoveryProvider">
+								<IntervalSeconds>$Config/IntervalSeconds$</IntervalSeconds>
+								<SyncTime>$Config/SyncTime$</SyncTime>
+								<ScriptName>Discover-Devices.ps1</ScriptName>
+								<ScriptBody>$IncludeFileContent/Scripts/Discovery/Discover-Devices.ps1$</ScriptBody>
+								<Parameters>
+									<Parameter>
+										<Name>sourceId</Name>
+										<Value>$MPElement$</Value>
+									</Parameter>
+									<Parameter>
+										<Name>managedEntityId</Name>
+										<Value>$Target/Id$</Value>
+									</Parameter>
+									<Parameter>
+										<Name>deviceAddress</Name>
+										<Value>$Target/Property[Type="SNL!System.NetworkManagement.Node"]/SNMPAddress$</Value>
+									</Parameter>
+									<Parameter>
+										<Name>deviceKey</Name>
+										<Value>$Target/Property[Type="SNL!System.NetworkManagement.Node"]/DeviceKey$</Value>
+									</Parameter>
+								</Parameters>
+								<TimeoutSeconds>$Config/TimeoutSeconds$</TimeoutSeconds>
+								<StrictErrorHandling>false</StrictErrorHandling>
+							</DataSource>
+							<ConditionDetection ID="FilterBySytemOID" TypeID="System!System.ExpressionFilter">
+								<Expression>
+									<RegExExpression>
+										<ValueExpression>
+											<Value>$Target/Property[Type="SNL!System.NetworkManagement.Node"]/SystemObjectID$</Value>
+										</ValueExpression>
+										<Operator>ContainsSubstring</Operator>
+										<Pattern>1.3.6.1.4.1.3375</Pattern>
+									</RegExExpression>
+								</Expression>
+							</ConditionDetection>
+						</MemberModules>
+						<Composition>
+							<Node ID="FilterBySytemOID">
+								<Node ID="DiscoveryProvider" />
+							</Node>
+						</Composition>
+					</Composite>
+				</ModuleImplementation>
+				<OutputType>System!System.Discovery.Data</OutputType>
+			</DataSourceModuleType>
+
+		</ModuleTypes>
+	</TypeDefinitions>
+
+	<LanguagePacks>
+		<LanguagePack ID="ENU" IsDefault="true">
+
+			<DisplayStrings>
+
+				<!-- AP.F5.DataSource.Discovery.Device.Filtered -->
+				<DisplayString ElementID="AP.F5.DataSource.Discovery.Device.Filtered">
+					<Name>Device Discovery DataSource</Name>
+					<Description>Discover Ap.F5 Devices from Network Management Nodes</Description>
+				</DisplayString>
+				<DisplayString ElementID="AP.F5.DataSource.Discovery.Device.Filtered" SubElementID="IntervalSeconds">
+					<Name>Interval Seconds</Name>
+					<Description>Frequency in seconds that module is run.</Description>
+				</DisplayString>
+				<DisplayString ElementID="AP.F5.DataSource.Discovery.Device.Filtered" SubElementID="SyncTime">
+					<Name>Synchronisation Time</Name>
+					<Description>Offset that this module is started from.</Description>
+				</DisplayString>
+
+			</DisplayStrings>
+
+		</LanguagePack>
+	</LanguagePacks>
+
+</ManagementPackFragment>

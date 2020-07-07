@@ -1,0 +1,54 @@
+﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<TypeDefinitions>
+		<EntityTypes>
+			<ClassTypes>
+
+				<!-- AP.F5.Base.Root -->
+				<ClassType ID="AP.F5.Root" Base="System!System.LogicalEntity" Accessibility="Public" Abstract="false" Hosted="false" Singleton="true" />
+
+			</ClassTypes>
+
+			<RelationshipTypes>
+
+				<!-- AP.F5.Root.Contains.NodeGroup -->
+				<RelationshipType ID="AP.F5.Root.Contains.NodeGroup" Base="System!System.Containment" Abstract="false" Accessibility="Public">
+					<Source ID="Source" Type="AP.F5.Root"/>
+					<Target ID="Target" Type="AP.F5.NodeGroup"/>
+				</RelationshipType>
+
+				<!-- AP.F5.Root.Contains.Devices -->
+				<RelationshipType ID="AP.F5.Root.Contains.Devices" Base="System!System.Containment" Abstract="false" Accessibility="Public">
+					<Source ID="Source" Type="AP.F5.Root"/>
+					<Target ID="Target" Type="AP.F5.Device"/>
+				</RelationshipType>
+
+
+			</RelationshipTypes>
+		</EntityTypes>
+	</TypeDefinitions>
+	<LanguagePacks>
+		<LanguagePack ID="ENU" IsDefault="true">
+			<DisplayStrings>
+
+				<!-- AP.F5.Base.Root -->
+				<DisplayString ElementID="AP.F5.Root">
+					<Name>F5</Name>
+					<Description>Root Object of all AP.F5 Management Packs</Description>
+				</DisplayString>
+
+				<!-- AP.F5.Root.Contains.NodeGroup -->
+				<DisplayString ElementID="AP.F5.Root.Contains.NodeGroup">
+					<Name>F5 Network Devices Group Hosting</Name>
+					<Description>Describes The Hosting Relationship Between Root and Network Device Group</Description>
+				</DisplayString>
+
+				<!-- AP.F5.Root.Contains.Devices -->
+				<DisplayString ElementID="AP.F5.Root.Contains.Devices">
+					<Name>F5 Root Contains Devices</Name>
+					<Description>Describes the Relationship Between the Root and F5 Devices</Description>
+				</DisplayString>
+
+			</DisplayStrings>
+		</LanguagePack>
+	</LanguagePacks>
+</ManagementPackFragment>

@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ManagementPack SchemaVersion="2.0" ContentReadable="true" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Manifest>
+    <Identity>
+      <ID>AP.F5.Overrides</ID>
+      <Version>20.7.1.7</Version>
+    </Identity>
+    <Name>AP.F5.Overrides</Name>
+    <References>
+      <Reference Alias="System">
+        <ID>System.Library</ID>
+        <Version>7.5.8501.0</Version>
+        <PublicKeyToken>31bf3856ad364e35</PublicKeyToken>
+      </Reference>
+      <Reference Alias="SNL">
+        <ID>System.NetworkManagement.Library</ID>
+        <Version>7.1.10226.0</Version>
+        <PublicKeyToken>31bf3856ad364e35</PublicKeyToken>
+      </Reference>
+      <Reference Alias="F5">
+        <ID>AP.F5.Devices</ID>
+        <Version>20.7.1.29</Version>
+        <PublicKeyToken>e8b71e2ddf7ffb6e</PublicKeyToken>
+      </Reference>
+    </References>
+  </Manifest>
+  <Monitoring>
+    <Overrides>
+      <RulePropertyOverride ID="AP.F5.Overrides.FreeMemoryPct" Context="F5!AP.F5.NodeGroup" Enforced="false" Rule="SNL!System.NetworkManagement.F5Rsc.Memory.FreeMemoryPct" Property="Enabled">
+        <Value>false</Value>
+      </RulePropertyOverride>
+      <RulePropertyOverride ID="AP.F5.Overrides.CurrentUtilization" Context="F5!AP.F5.NodeGroup" Enforced="false" Rule="SNL!System.NetworkManagement.F5Rsc.Processor.CurrentUtilization" Property="Enabled">
+        <Value>false</Value>
+      </RulePropertyOverride>
+      <MonitorPropertyOverride ID="AP.F5.Overrides.FreeMemoryMonitorForDeviceGroup" Context="F5!AP.F5.NodeGroup" Enforced="true" Monitor="SNL!System.NetworkManagement.F5Rsc.Memory.InsufficientFreeMemory" Property="Enabled">
+        <Value>false</Value>
+      </MonitorPropertyOverride>
+      <MonitorPropertyOverride ID="AP.F5.Overrides.ProcessorUtilisation" Context="F5!AP.F5.NodeGroup" Enforced="true" Monitor="SNL!System.NetworkManagement.F5Rsc.Processor.HighUtilization" Property="Enabled">
+        <Value>false</Value>
+      </MonitorPropertyOverride>
+      <MonitorPropertyOverride ID="AP.F5.Overrides.DuplicateIP" Context="F5!AP.F5.NodeGroup" Enforced="true" Monitor="SNL!System.NetworkManagement.DuplicateIP.DuplicateIPMonitor" Property="Enabled">
+        <Value>false</Value>
+      </MonitorPropertyOverride>
+    </Overrides>
+  </Monitoring>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="AP.F5.Overrides">
+          <Name>AP.F5 (Overrides) Management Pack</Name>
+          <Description>Overrides F5 Network Devices CPU and Memory Monitors and Performance Rules</Description>
+        </DisplayString>
+      </DisplayStrings>
+      <KnowledgeArticles>
+        <KnowledgeArticle ElementID="AP.F5.Overrides">
+          <MamlContent>
+            <section xmlns="http://schemas.microsoft.com/maml/2004/10">
+              <title>AP.F5 (Overrides) Management Pack</title>
+            </section>
+          </MamlContent>
+        </KnowledgeArticle>
+      </KnowledgeArticles>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPack>

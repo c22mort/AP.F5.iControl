@@ -1,0 +1,24 @@
+﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <!-- AP.F5.Overrides -->
+        <DisplayString ElementID="AP.F5.Overrides">
+          <Name>AP.F5 (Overrides) Management Pack</Name>
+          <Description>Overrides F5 Network Devices CPU and Memory Monitors and Performance Rules</Description>
+        </DisplayString>
+      </DisplayStrings>
+
+      <KnowledgeArticles>
+        <KnowledgeArticle ElementID="AP.F5.Overrides">
+          <MamlContent>
+            <section xmlns="http://schemas.microsoft.com/maml/2004/10">
+              <title>AP.F5 (Overrides) Management Pack</title>
+            </section>
+          </MamlContent>
+        </KnowledgeArticle>
+      </KnowledgeArticles>
+    
+  </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

@@ -1,0 +1,21 @@
+﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<Monitoring>
+		<Overrides>
+			<MonitorPropertyOverride ID="AP.F5.Overrides.FreeMemoryMonitorForDeviceGroup" Context="F5!AP.F5.NodeGroup" Enforced="true" Monitor="SNL!System.NetworkManagement.F5Rsc.Memory.InsufficientFreeMemory" Property="Enabled">
+				<Value>false</Value>
+			</MonitorPropertyOverride>
+			<MonitorPropertyOverride ID="AP.F5.Overrides.ProcessorUtilisation" Context="F5!AP.F5.NodeGroup" Enforced="true" Monitor="SNL!System.NetworkManagement.F5Rsc.Processor.HighUtilization" Property="Enabled">
+				<Value>false</Value>
+			</MonitorPropertyOverride>
+			<MonitorPropertyOverride ID="AP.F5.Overrides.DuplicateIP" Context="F5!AP.F5.NodeGroup" Enforced="true" Monitor="SNL!System.NetworkManagement.DuplicateIP.DuplicateIPMonitor" Property="Enabled">
+				<Value>false</Value>
+			</MonitorPropertyOverride>
+			<RulePropertyOverride ID="AP.F5.Overrides.FreeMemoryPct" Context="F5!AP.F5.NodeGroup" Enforced="false" Rule="SNL!System.NetworkManagement.F5Rsc.Memory.FreeMemoryPct" Property="Enabled">
+				<Value>false</Value>
+			</RulePropertyOverride>
+			<RulePropertyOverride ID="AP.F5.Overrides.CurrentUtilization" Context="F5!AP.F5.NodeGroup" Enforced="false" Rule="SNL!System.NetworkManagement.F5Rsc.Processor.CurrentUtilization" Property="Enabled">
+				<Value>false</Value>
+			</RulePropertyOverride>
+		</Overrides>
+	</Monitoring>
+</ManagementPackFragment>

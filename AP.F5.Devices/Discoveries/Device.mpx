@@ -1,0 +1,47 @@
+﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<Monitoring>
+		<Discoveries>
+
+			<!-- AP.F5.Discovery.Device -->
+			<Discovery ID="AP.F5.Discovery.Device" Target="SNL!System.NetworkManagement.Node" Enabled="true" ConfirmDelivery="false" Remotable="true" Priority="Normal">
+				<Category>Discovery</Category>
+				<DiscoveryTypes>
+					<DiscoveryClass TypeID="AP.F5.Device" />
+					<DiscoveryRelationship TypeID="AP.F5.Root.Contains.Devices" />
+				</DiscoveryTypes>
+				<DataSource ID="DS" TypeID="AP.F5.DataSource.Discovery.Device.Filtered">
+					<IntervalSeconds>600</IntervalSeconds>
+					<SyncTime>00:00</SyncTime>
+					<TimeoutSeconds>60</TimeoutSeconds>
+				</DataSource>
+			</Discovery>
+
+		</Discoveries>
+	</Monitoring>
+	<LanguagePacks>
+		<LanguagePack ID="ENU" IsDefault="true">
+			<DisplayStrings>
+
+				<!-- AP.F5.Discovery.Device -->
+				<DisplayString ElementID="AP.F5.Discovery.Device">
+					<Name>Device Discovery</Name>
+					<Description>Discovers F5 Devices</Description>
+				</DisplayString>
+
+			</DisplayStrings>
+			<KnowledgeArticles>
+
+				<!-- AP.F5.Discovery.Device -->
+				<KnowledgeArticle ElementID="AP.F5.Discovery.Device">
+					<MamlContent>
+						<section xmlns="http://schemas.microsoft.com/maml/2004/10">
+							<title>F5 Device Discovery</title>
+							<para>Uses SNMP via a Powershell script to discover F5 Devices!</para>
+						</section>
+					</MamlContent>
+				</KnowledgeArticle>
+
+			</KnowledgeArticles>
+		</LanguagePack>
+	</LanguagePacks>
+</ManagementPackFragment>
